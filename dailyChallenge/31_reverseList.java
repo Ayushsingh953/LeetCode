@@ -37,7 +37,7 @@ class Solution {
 
 
 //Using loop only
-class Solution {
+class Solution2 {
     public ListNode reverseList(ListNode head) {
         ListNode prev=null;
         ListNode cur=head;
@@ -52,3 +52,25 @@ class Solution {
         head=prev;
         return head;
     }
+}
+
+// Using recursion
+class Solution3 {
+    ListNode newHead;
+    public ListNode reverseList(ListNode head) {
+       if(head==null){
+        return head;
+       }
+       reverseHelper(head);
+       return newHead;
+    }
+    public ListNode reverseHelper(ListNode head){
+        if(head.next==null){
+            return newHead=head;
+        }
+        ListNode nextNode=reverseHelper(head.next);
+        nextNode.next=head;
+        head.next=null;
+        return head;
+    }
+}
